@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import SignUp from "./pages/Signup";
+import SignIn from "./pages/SignIn";
+import ContactUs from "./pages/Contactus";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<SignUp />} />
+        <Route path="/Signin" element={<SignIn />} />
+
+        {/* <Route
+        path="/aboutus"          //yaha pe ALAN AI-FAQS AND GENERAL IDEA OF HOW WE CAN HELP
+        element={<Aboutus/>}  
+      /> */}
+
+        <Route path="/Contactus" element={<ContactUs />} />
+
+        <Route path="/*" element={<h1>PAGE NOT FOUND</h1>} />
+      </Routes>
     </div>
   );
 }
