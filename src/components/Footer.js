@@ -1,6 +1,6 @@
 import "../styles/Footer.css";
 import { motion } from "framer-motion";
-import { FaInstagramSquare,FaRedditSquare,FaGithubSquare,FaLinkedin } from "react-icons/fa";
+import { FaInstagramSquare,FaGithubSquare,FaLinkedin,FaEnvelopeSquare} from "react-icons/fa";
 
 function Footer() {
   return (
@@ -25,8 +25,8 @@ function Footer() {
             <FaGithubSquare size = '36' className="icons_img"color="black"/>
             </a>
 
-            <a href="https://www.reddit.com/search/?q=Leading_Dot101">
-            <FaRedditSquare size ='36'className="icons_img" color="black"/>
+            <a href="mailto: dubeyajitesh07@gmail.com">
+            <FaEnvelopeSquare size ='36'className="icons_img" color="black"/>
             </a>
 
             <a href="https://www.instagram.com/ajitesh._/">
