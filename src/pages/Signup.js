@@ -1,5 +1,4 @@
 import "../styles/SignUp.css";
-// import Footer from "../components/Footer";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
@@ -19,9 +18,8 @@ function SignUp() {
     event.preventDefault();
     if (name === "" || Email === "" || password === "") {
       toast.error("PLEASE ENTER ALL THE FIELDS");
-      return;   //so that method tak jaaye hi naa if any information is not entered
+      return; //so that method tak jaaye hi naa if any information is not entered
     }
-    
 
     const response = await fetch("http://localhost:1337/api/register", {
       method: "POST",
@@ -41,7 +39,7 @@ function SignUp() {
       localStorage.setItem("isAuthkey", true);
       navigate("/SignIn");
     } else {
-      console.log("not working");
+      console.log("SOME ERROR OCCURED");
     }
   }
   return (
@@ -66,7 +64,7 @@ function SignUp() {
               viewport={{ once: true }}
             >
               <input
-              type="text"
+                type="text"
                 placeholder="ENTER YOUR NAME"
                 required={true}
                 onChange={(e) => setName(e.target.value)}
@@ -133,9 +131,11 @@ function SignUp() {
           className="signup-right"
         ></motion.div>
       </div>
-      {/* <div className="footer">
-        <Footer />
-      </div> */}
+      <div className="footer">
+        {/* <Footer /> */}
+        <div className="footer">
+      </div>
+      </div>
     </>
   );
 }

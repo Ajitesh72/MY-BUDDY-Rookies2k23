@@ -1,10 +1,8 @@
 import "../styles/SignUp.css"; //css is same in signup and signin
-// import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import Navbar from "../components/Navbar";
 
 function SignIn() {
   const [email, setEmail] = React.useState("");
@@ -34,7 +32,6 @@ function SignIn() {
       localStorage.setItem("token", data.user);
       localStorage.setItem("isAuthkey", true);
       toast.success("LOGIN SUCCESSFUL");
-      // for (let i = 0; i <= 3000; i++) {}
       setTimeout(function () {
         navigate("/Home");
       }, 1500);
@@ -123,7 +120,7 @@ function SignIn() {
       <br />
       <div className="test"></div>
       {/* <div className="footer">
-        <Footer />
+        <Footerauth />
       </div> */}
     </div>
   );

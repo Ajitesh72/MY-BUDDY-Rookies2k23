@@ -10,7 +10,7 @@ function ContactUs() {
   return (
     <div>
       {isAuth&&<div>
-        {/* <Navbar/> */}
+        <Navbar/>
         {/* this div/component will be present in the botton of pages */}
       </div>}
       <Footer />

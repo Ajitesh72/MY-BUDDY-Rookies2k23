@@ -9,6 +9,14 @@
     display: flex;
     gap: 4em;
 }
+.Navbar-title:hover{
+    cursor: pointer; 
+    color:rgb(63, 86, 188)
+}
+.Navbar-logo:hover{
+    cursor: pointer; 
+}
+
 
 @media screen and (max-width: 938px) {
     .navbar-main{
