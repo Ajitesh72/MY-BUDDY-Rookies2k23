@@ -1,0 +1,17 @@
+.navbar-main{
+    display: flex;
+    justify-content: space-between;
+    margin:1.5em 5em  1.5em 5em;
+    font-size: 1em;
+    /* font-size: small; */
+}
+.navbarBody-2{
+    display: flex;
+    gap: 4em;
+}
+
+@media screen and (max-width: 938px) {
+    .navbar-main{
+        font-size: 0.5em;
+    }
+  }

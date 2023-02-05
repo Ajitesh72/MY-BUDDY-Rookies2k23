@@ -82,6 +82,11 @@ p {
 /* .Carousel-image{
     height: 50em;
   } */
+  .footer
+  {bottom:-1}
+
+
+  
 
 @media screen and (max-width: 1131px) {
   h1 {
@@ -123,6 +128,8 @@ p {
   p {
     font-size: 3em;
   }
+  .footer
+  {display: none;}
 }
 @media screen and (max-width: 779px) {
   h1 {
@@ -183,6 +190,7 @@ p {
   h1 {
     font-size: 2em;
   }
+  
 }
 @media screen and (max-width: 482px) {
   p {
@@ -200,6 +208,9 @@ p {
     padding: 10em;
     /* background-image: url(../images/Signup_small.png); */
     background-repeat: no-repeat;
+  }
+  .footer{
+    display: flex;
   }
 }
 @media screen and (max-width: 450px) {

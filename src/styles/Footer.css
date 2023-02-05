@@ -1,41 +1,40 @@
-
 .contactUs-body {
-    background: linear-gradient(
-      90deg,
-      hsla(217, 100%, 50%, 1) 0%,
-      hsla(186, 100%, 69%, 1) 100%
-    );
-  
-    background: -webkit-linear-gradient(
-      90deg,
-      hsla(217, 100%, 50%, 1) 0%,
-      hsla(186, 100%, 69%, 1) 100%
-    );
-   
-    border-radius: 1.5em 1.5em 0 0;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .info{
-      display: flex;
-      justify-content: center;
-      font-size: 0.7em;
-  }
-  
-  .icons{
-      display: flex;
-      justify-content: center;
-  }
+  background: linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 1) 0%,
+    hsla(186, 100%, 69%, 1) 100%
+  );
 
-  @media screen and (max-width: 935px) {
-   .info{
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 1) 0%,
+    hsla(186, 100%, 69%, 1) 100%
+  );
+
+  border-radius: 1.5em 1.5em 0 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  font-size: 0.7em;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 935px) {
+  .info {
     font-size: 0.4em;
-   }
   }
-  @media screen and (max-width: 655px) {
-   .icons{
+}
+@media screen and (max-width: 655px) {
+  .icons {
     font-size: 0.01em;
-   }
   }
+}
