@@ -15,7 +15,8 @@ function SignIn() {
 
   async function loginUser(event) {
     event.preventDefault();
-    const response = await fetch("http://localhost:1337/api/login", {
+    if(email && password){
+      const response = await fetch("http://localhost:1337/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,20 +24,26 @@ function SignIn() {
       body: JSON.stringify({
         email,
         password,
-      }),
-    });
+        }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.user) {
-      localStorage.setItem("token", data.user);
-      localStorage.setItem("isAuthkey", true);
-      toast.success("LOGIN SUCCESSFUL");
-      setTimeout(function () {
-        navigate("/Home");
-      }, 1500);
-    } else {
-      toast.error("PLEASE CHECK YOUR DETAILS AGAIN");
+      if (data.user) {
+        localStorage.setItem("token", data.user);
+        localStorage.setItem("isAuthkey", true);
+        toast.success("LOGIN SUCCESSFUL");
+        // for (let i = 0; i <= 3000; i++) {}
+        setTimeout(function () {
+          navigate("/Home");
+        }, 1500);
+      } else {
+        toast.error("PLEASE CHECK YOUR DETAILS AGAIN");
+      }
+    }
+    else{
+      toast.error("PLEASE ENTER ALL THE FIELDS");
+      return;
     }
   }
   return (
@@ -65,6 +72,9 @@ function SignIn() {
                 placeholder="EMAIL"
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
+                onKeyDown={(e)=>{
+                  e.code =="Enter" && loginUser(e)
+                }}
               />
               <br />
               <br />
@@ -72,6 +82,9 @@ function SignIn() {
                 placeholder="PASSWORD"
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
+                onKeyDown={(e)=>{
+                  e.code =="Enter" && loginUser(e)
+                }}
               />
               <br />
               <br />
