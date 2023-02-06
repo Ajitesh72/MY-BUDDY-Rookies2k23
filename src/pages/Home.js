@@ -1,5 +1,6 @@
 import "../styles/Home.css";
 import Navbar from "../components/Navbar";
+import Hamburger from "../components/Hamburger";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, React } from "react";
@@ -20,12 +21,17 @@ function Home() {
   }, [isAuth]);
 
   return (
-    <div>
+    <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 1, delay: 0.5 }}
+    viewport={{ once: true }}>
       {isAuth && (
         <div>
           <Navbar />
+          <Hamburger/>
           <div className="Home-main">
-            Home
+            Home PAGE CONTENT
             <h1>Your name: {user.name || "No quote found"}</h1>
           </div>
         </div>
@@ -36,7 +42,7 @@ function Home() {
           <h2>PLZ SIGNIN TO VIEW THIS PAGE</h2>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

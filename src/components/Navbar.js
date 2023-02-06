@@ -52,8 +52,12 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar-main">
-      <div className="navbarBody-1">
+    <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 1, delay: 0.5 }}
+    viewport={{ once: true }} className="navbar-main">
+      <div className="navbarBody-1" >
         <p className="Navbar-logo" onClick={toggleHome}>
           LOGO
         </p>
@@ -90,7 +94,7 @@ function Navbar() {
           SIGNOUT
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
