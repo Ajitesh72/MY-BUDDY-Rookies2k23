@@ -17,13 +17,8 @@ function SignUp() {
 
   async function registerUser(event) {
     event.preventDefault();
-    if (name === "" || Email === "" || password === "") {
-      toast.error("PLEASE ENTER ALL THE FIELDS");
-      return;   //so that method tak jaaye hi naa if any information is not entered
-    }
-    
-
-    const response = await fetch("http://localhost:1337/api/register", {
+    if(name && Email && password){
+      const response = await fetch("http://localhost:1337/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,17 +27,25 @@ function SignUp() {
         name,
         Email,
         password,
-      }),
-    });
+        }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.status === "ok") {
-      localStorage.setItem("isAuthkey", true);
-      navigate("/SignIn");
-    } else {
-      console.log("not working");
+      if (data.status === "ok") {
+        localStorage.setItem("isAuthkey", true);
+        navigate("/SignIn");
+      } else {
+        console.log("not working");
+      }
+
     }
+    else{
+      toast.error("PLEASE ENTER ALL THE FIELDS");
+      return;
+    }
+
+    
   }
   return (
     <>
@@ -70,6 +73,9 @@ function SignUp() {
                 placeholder="ENTER YOUR NAME"
                 required={true}
                 onChange={(e) => setName(e.target.value)}
+                onKeyDown={(e)=>{
+                  e.code =="Enter" && registerUser(e)
+                }}
               />
               <br />
               <br />
@@ -78,6 +84,9 @@ function SignUp() {
                 required={true}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
+                onKeyDown={(e)=>{
+                  e.code =="Enter" && registerUser(e)
+                }}
               />
               <br />
               <br />
@@ -86,6 +95,9 @@ function SignUp() {
                 required={true}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
+                onKeyDown={(e)=>{
+                  e.code =="Enter" && registerUser(e)
+                }}
               />
               <br />
               <br />
