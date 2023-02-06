@@ -4,6 +4,7 @@ import SignIn from "./pages/SignIn";
 import ContactUs from "./pages/Contactus";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
+import Mehdi from "./pages/mehdi";
 // import Navbar from "./components/Navbar";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<SignUp />} />
         <Route path="/Signin" element={<SignIn />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/mehdi" element={<Mehdi/>} />
 
         {/* <Route
         path="/aboutus"          //yaha pe ALAN AI-FAQS AND GENERAL IDEA OF HOW WE CAN HELP
