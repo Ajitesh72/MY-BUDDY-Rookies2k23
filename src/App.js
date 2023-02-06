@@ -13,8 +13,8 @@ function App() {
     <div>
       {/* {isAuth&& <Navbar/>} */}
       <Routes>
-        <Route path="/" element={<SignUp />} />
-        <Route path="/Signin" element={<SignIn />} />
+        <Route path="/" element={<SignIn/>} />
+        <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/mehdi" element={<Mehdi/>} />
 

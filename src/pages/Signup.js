@@ -11,7 +11,7 @@ function SignUp() {
 
   let navigate = useNavigate();
   function ChangetoSignIn() {
-    navigate("/SignIn");
+    navigate("/");
   }
 
   async function registerUser(event) {

@@ -10,7 +10,7 @@ function SignIn() {
 
   let navigate = useNavigate();
   function ChangetoSignUp() {
-    navigate("/");
+    navigate("/signUp");
   }
 
   async function loginUser(event) {
@@ -59,7 +59,7 @@ function SignIn() {
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              <h1>Create an Account</h1>
+              <h1>Login</h1>
               <p>Continue Your Journey With MY-BUDDY</p>
             </motion.div>
             <motion.div
