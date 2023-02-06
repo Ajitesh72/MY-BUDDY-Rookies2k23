@@ -4,50 +4,97 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
-    const[one,setOne]=React.useState(true)
-    const[two,setTwo]=React.useState(false)
-    const[three,setThree]=React.useState(false)
+  const [bool, setBool] = React.useState({
+    home: true,
+    contactUs: false,
+  });
 
-    const SignOut = ()=>{
-        navigate("/")
-        localStorage.setItem("isAuthkey",false)
-        window.localStorage.clear();
+  React.useEffect(() => {
+    // eslint-disable-next-line default-case
+    switch (window.location.pathname) {
+      case "/home": {
+        setBool({
+          home: true,
+          contactUs: false,
+        });
+        break;
+      }
+      case "/ContactUs": {
+        setBool({
+          home: false,
+          contactUs: true,
+        });
+        break;
+      }
     }
-    const toggleOne = ()=>{
-        setOne(true)
-        setTwo(false)
-        setThree(false)
-        navigate("/home")
-    }
-    const toggleTwo = ()=>{
-        setOne(false)
-        setTwo(true)
-        setThree(false)
-        navigate("/ContactUs")
-    }
-    const toggleThree = ()=>{
-        setOne(false)
-        setTwo(false)
-        setThree(true)
-        navigate("/ContactUs")
-    }
-    const mystyle = {
-        color: "red",
-      };
+  }, [navigate]);
+
+  const SignOut = () => {
+    navigate("/");
+    window.localStorage.clear();
+  };
+
+  const toggleHome = () => {
+    setBool({
+      home: true,
+      contactUs: false,
+    });
+    navigate("/Home");
+  };
+  const toggleContactUs = () => {
+    setBool({
+      home: false,
+      contactUs: true,
+    });
+    navigate("/ContactUs");
+  };
 
   return (
-   <div className="navbar-main">
-    <div className="navbarBody-1"><p>LOGO</p></div>
-    <div className="navbarBody-2">
-        {one?<p onClick={toggleOne} style={mystyle}>HOME</p>:<p onClick={toggleOne}>HOME</p>}
-        {two?<p onClick={toggleTwo} style={mystyle}>ABOUT</p>:<p onClick={toggleTwo}>ABOUT</p>}
-        {three?<p onClick={toggleThree} style={mystyle}>CONTACT</p>:<p onClick={toggleThree}>CONTACT</p>}
-        <p onClick={SignOut}>SIGNOUT</p>
-    </div>
-      
-   </div>
+    <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 1, delay: 0.5 }}
+    viewport={{ once: true }} className="navbar-main">
+      <div className="navbarBody-1" >
+        <p className="Navbar-logo" onClick={toggleHome}>
+          LOGO
+        </p>
+      </div>
+      <div className="navbarBody-2">
+        <p
+          onClick={toggleHome}
+          style={{
+            textDecoration: bool.home ? "underline " : "",
+            color: bool.home ? "#0058CC" : "",
+          }}
+          className="Navbar-title"
+        >
+          HOME
+        </p>
+        <p
+          onClick={toggleContactUs}
+          style={{
+            textDecoration: bool.contactUs ? "underline" : "",
+            color: bool.contactUs ? "#0058CC" : "",
+          }}
+          className="Navbar-title"
+        >
+          CONTACTUS
+        </p>
+
+        <p
+          style={{
+            color: "Red",
+          }}
+          onClick={SignOut}
+          className="Navbar-title"
+        >
+          SIGNOUT
+        </p>
+      </div>
+    </motion.div>
   );
 }
 

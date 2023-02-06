@@ -1,0 +1,16 @@
+.hamburger-main{
+    display: none;
+}
+
+/* .hamburgerNav{
+    display: flex;
+    justify-content: space-between;
+} */
+
+@media screen and (max-width: 800px) {
+    .hamburger-main {
+        display:flex;
+        justify-content: space-between;
+        margin:3em 1em 0 2.7em;
+    }
+  }

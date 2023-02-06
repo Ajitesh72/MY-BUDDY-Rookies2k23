@@ -1,5 +1,4 @@
 import "../styles/SignUp.css";
-// import Footer from "../components/Footer";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
@@ -69,7 +68,7 @@ function SignUp() {
               viewport={{ once: true }}
             >
               <input
-              type="text"
+                type="text"
                 placeholder="ENTER YOUR NAME"
                 required={true}
                 onChange={(e) => setName(e.target.value)}
@@ -145,9 +144,11 @@ function SignUp() {
           className="signup-right"
         ></motion.div>
       </div>
-      {/* <div className="footer">
-        <Footer />
-      </div> */}
+      <div className="footer">
+        {/* <Footer /> */}
+        <div className="footer">
+      </div>
+      </div>
     </>
   );
 }

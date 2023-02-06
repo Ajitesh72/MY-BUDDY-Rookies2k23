@@ -1,10 +1,8 @@
 import "../styles/SignUp.css"; //css is same in signup and signin
-// import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import Navbar from "../components/Navbar";
 
 function SignIn() {
   const [email, setEmail] = React.useState("");
@@ -135,7 +133,7 @@ function SignIn() {
       <br />
       <div className="test"></div>
       {/* <div className="footer">
-        <Footer />
+        <Footerauth />
       </div> */}
     </div>
   );

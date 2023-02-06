@@ -9,9 +9,23 @@
     display: flex;
     gap: 4em;
 }
+.Navbar-title:hover{
+    cursor: pointer; 
+    color:rgb(63, 86, 188)
+}
+.Navbar-logo:hover{
+    cursor: pointer; 
+}
+
 
 @media screen and (max-width: 938px) {
     .navbar-main{
         font-size: 0.5em;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .navbar-main {
+        display:none
     }
   }

@@ -4,13 +4,13 @@ import SignIn from "./pages/SignIn";
 import ContactUs from "./pages/Contactus";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 
 function App() {
-  const [isAuth, setIsAuth] = React.useState(localStorage.getItem("isAuthkey"));
+  // const [isAuth, setIsAuth] = React.useState(localStorage.getItem("isAuthkey"));
   return (
     <div>
-      {isAuth&& <Navbar/>}
+      {/* {isAuth&& <Navbar/>} */}
       <Routes>
         <Route path="/" element={<SignUp />} />
         <Route path="/Signin" element={<SignIn />} />
