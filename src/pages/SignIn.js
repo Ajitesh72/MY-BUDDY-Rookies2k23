@@ -73,7 +73,7 @@ function SignIn() {
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 onKeyDown={(e)=>{
-                  e.code =="Enter" && loginUser(e)
+                  e.code ==="Enter" && loginUser(e)
                 }}
               />
               <br />
@@ -83,7 +83,7 @@ function SignIn() {
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 onKeyDown={(e)=>{
-                  e.code =="Enter" && loginUser(e)
+                  e.code ==="Enter" && loginUser(e)
                 }}
               />
               <br />
