@@ -13,6 +13,15 @@ function SignIn() {
     navigate("/signUp");
   }
 
+  React.useEffect(() => {
+    
+    const token=localStorage.getItem("token")
+    if(token){
+      navigate("/home")
+    }
+   
+}, []);
+
   async function loginUser(event) {
     event.preventDefault();
     if(email && password){
@@ -31,9 +40,8 @@ function SignIn() {
 
       if (data.user) {
         localStorage.setItem("token", data.user);
-        localStorage.setItem("isAuthkey", true);
+        // localStorage.setItem("isAuthkey", true);
         toast.success("LOGIN SUCCESSFUL");
-        // for (let i = 0; i <= 3000; i++) {}
         setTimeout(function () {
           navigate("/Home");
         }, 1500);

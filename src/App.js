@@ -5,13 +5,11 @@ import ContactUs from "./pages/Contactus";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Mehdi from "./pages/mehdi";
-// import Navbar from "./components/Navbar";
 
 function App() {
-  // const [isAuth, setIsAuth] = React.useState(localStorage.getItem("isAuthkey"));
+  // const [token, setToken] = React.useState(localStorage.getItem("token"));
   return (
     <div>
-      {/* {isAuth&& <Navbar/>} */}
       <Routes>
         <Route path="/" element={<SignIn/>} />
         <Route path="/SignUp" element={<SignUp />} />

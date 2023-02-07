@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 function Mehdi() {
     async function fetchsomething(){
@@ -15,9 +15,27 @@ function Mehdi() {
         const data = await response.json();
         console.log(data)
     }
+
+    async function getuserData(){
+        const response = await fetch("http://localhost:1337/api/mehdigetdata",{
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        // body: JSON.stringify({
+        //     name : "i am mehdi"
+        //     }),
+        });
+        const data = await response.json();
+        console.log(data)
+    }
+
+
     return (
         <div>
             <button onClick = {fetchsomething} >Fetch something</button>
+            <button onClick = {getuserData} >Fetch something</button>
         </div>
     )
 }

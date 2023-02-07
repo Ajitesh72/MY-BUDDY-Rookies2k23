@@ -14,6 +14,7 @@ function SignUp() {
     navigate("/");
   }
 
+ 
   async function registerUser(event) {
     event.preventDefault();
     if(name && Email && password){
@@ -32,7 +33,7 @@ function SignUp() {
       const data = await response.json();
 
       if (data.status === "ok") {
-        localStorage.setItem("isAuthkey", true);
+        // localStorage.setItem("isAuthkey", true);
         navigate("/SignIn");
       } else {
         console.log("not working");
@@ -73,7 +74,7 @@ function SignUp() {
                 required={true}
                 onChange={(e) => setName(e.target.value)}
                 onKeyDown={(e)=>{
-                  e.code =="Enter" && registerUser(e)
+                  e.code ==="Enter" && registerUser(e)
                 }}
               />
               <br />
@@ -84,7 +85,7 @@ function SignUp() {
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 onKeyDown={(e)=>{
-                  e.code =="Enter" && registerUser(e)
+                  e.code ==="Enter" && registerUser(e)
                 }}
               />
               <br />
@@ -95,7 +96,7 @@ function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 onKeyDown={(e)=>{
-                  e.code =="Enter" && registerUser(e)
+                  e.code ==="Enter" && registerUser(e)
                 }}
               />
               <br />

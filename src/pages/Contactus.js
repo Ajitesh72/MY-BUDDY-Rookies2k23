@@ -8,7 +8,8 @@ import { useSelector} from "react-redux";
 
 
 function ContactUs() {
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuthkey"));
+  // const token=localStorage.getItem("token")
+  const [token] = useState(localStorage.getItem("token"));
   const flip = useSelector((state) => state.mainReducer.flipNavbar.value);
   return (
     <motion.div
@@ -17,7 +18,7 @@ function ContactUs() {
           transition={{ duration: 1, delay: 0.5 }}
           viewport={{ once: true }}>
 
-      {isAuth && <div>
+      {token && <div>
         <Navbar/>
         <Hamburger/>
       </div>}
@@ -26,7 +27,7 @@ function ContactUs() {
        CONTACT US PAGE
       </div>}
 
-      {!isAuth&&<div>
+      {!token&&<div>
        <h1>PLEASE SIGNIN TO VIEW THIS PAGE</h1>
       </div>}
 

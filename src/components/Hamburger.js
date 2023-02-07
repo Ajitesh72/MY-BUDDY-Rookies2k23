@@ -41,8 +41,9 @@ function Hamburger() {
   }, [navigate]);
 
   const SignOut = () => {
-    navigate("/");
     window.localStorage.clear();
+    flipMenu()
+    navigate("/");
   };
 
   const toggleHome = () => {
