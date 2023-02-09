@@ -48,7 +48,7 @@ const handleClick = async () => {
         <div>
           {!flip && <div className="Home-main">
             <p>YOUR PAYMENT WAS SUCCESFULL</p>
-            <button onClick={handleClick}>GO HOME</button>
+            <button onClick={handleClick}>SEND ME CONFIRMATION MAIL AND GO HOME</button>
             {/* {dataFetched&&<h1>Your name: {userData.userData.name || "No quote found"}</h1>} */}
           </div>}
         </div>
