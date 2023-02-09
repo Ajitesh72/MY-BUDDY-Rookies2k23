@@ -34,7 +34,7 @@ function SignUp() {
 
       if (data.status === "ok") {
         // localStorage.setItem("isAuthkey", true);
-        navigate("/SignIn");
+        navigate("/");
       } else {
         console.log("not working");
       }
