@@ -4,16 +4,14 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
-function SignIn() {
+function Adminlogin() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const[role,setRole]=React.useState("")//here it will either be worker or Client
 
   let navigate = useNavigate();
   function ChangetoSignUp() {
     navigate("/signUp");
   }
-
 
   React.useEffect(() => {
     
@@ -26,9 +24,9 @@ function SignIn() {
 
   async function loginUser(event) {
     event.preventDefault();
-    if(role.toUpperCase()==="JOB" || role.toUpperCase()==="CLIENT"){
     if(email && password){
-      const response = await fetch("http://localhost:1337/api/login", {
+      console.log("yaha aa raha")
+      const response = await fetch("http://localhost:1337/api/adminlogin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,18 +34,20 @@ function SignIn() {
       body: JSON.stringify({
         email,
         password,
-        role
         }),
       });
 
       const data = await response.json();
+      console.log(data)
 
       if (data.user) {
         localStorage.setItem("token", data.user);
         // localStorage.setItem("isAuthkey", true);
         toast.success("LOGIN SUCCESSFUL");
         setTimeout(function () {
-          navigate("/Home");
+          // navigate("/Home");
+          navigate("/AdminWorker");
+          
         }, 1500);
       } else {
         toast.error("PLEASE CHECK YOUR DETAILS AGAIN");
@@ -58,10 +58,6 @@ function SignIn() {
       return;
     }
   
-}else{
-  toast.error("ENTER YOUR ROLE AS EITHER 'JOB OR CLIENT' ");
-      return
-}
   }
   return (
     <div>
@@ -76,8 +72,8 @@ function SignIn() {
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              <h1>Login</h1>
-              <p>Continue Your Journey With MY-BUDDY</p>
+              <h1>Are you Admin?Login</h1>
+              <p>Monitor MYBUDDY!!!</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -105,14 +101,14 @@ function SignIn() {
               />
               <br />
               <br />
-              <input
+              {/* <input
                 type="text"
                 placeholder="ROLE:JOB OR CLIENT"
                 required={true}
                 onChange={(e) => setRole(e.target.value)}
                 onKeyDown={(e) => {
                   e.code === "Enter" && loginUser(e);
-                }}/>
+                }}/> */}
             </motion.div>
             <br />
             <motion.div
@@ -125,7 +121,7 @@ function SignIn() {
             >
               Sign In
             </motion.div>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
@@ -136,7 +132,7 @@ function SignIn() {
               <p className="login-btn" onClick={ChangetoSignUp}>
                 SignUp
               </p>
-            </motion.div>
+            </motion.div> */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -164,4 +160,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default Adminlogin;

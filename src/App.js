@@ -7,6 +7,8 @@ import { Route, Routes } from "react-router-dom";
 import Mehdi from "./pages/mehdi";
 import Premium from "./pages/Premium";
 import Success from "./pages/Success"
+import Adminlogin from "./pages/AdminLogin"
+import AdminWorker from "./adminPage/adminWorker"
 
 function App() {
   // const [token, setToken] = React.useState(localStorage.getItem("token"));
@@ -15,6 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<SignIn/>} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/AdminlogIn" element={<Adminlogin />} />
+        <Route path="/AdminWorker" element={<AdminWorker />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/mehdi" element={<Mehdi/>} />
         <Route path="/Premium" element={<Premium/>} />

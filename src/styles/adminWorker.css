@@ -1,0 +1,39 @@
+.verificationMain{
+    display:flex;
+    gap:3em;
+    margin-top: 3em;    
+}
+.verification-btn{
+
+}
+.verification-btn{
+    padding: 1.2em 4.5em;
+    display: flex;
+    justify-content: center;
+    border-radius: 1em;
+    background-image: linear-gradient(to right, #1c08ff, #0095ff);
+  
+    /* background-color:#1001bb; */
+    color: aliceblue;
+  }
+  
+  .verification-btn:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right, #4c42bb, #06b8ff);
+  }
+
+  .admin-header{
+    display:flex;
+    justify-content: space-between;
+    margin-left:1em;
+    margin-right:1em;
+    font-size: 1.5em;
+  }
+.admin-header-signout{
+    color: red;
+  }
+.admin-header-signout:hover{
+    cursor: pointer;
+    text-decoration: underline rgb(255, 34, 0);
+    color: red;
+  }

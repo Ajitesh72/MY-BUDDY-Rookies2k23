@@ -14,6 +14,9 @@ function SignUp() {
   function ChangetoSignIn() {
     navigate("/");
   }
+  function ChangetoAdminSignIn() {
+    navigate("/AdminlogIn");
+  }
 
   async function registerUser(event) {
     console.log(role.toUpperCase())
@@ -150,6 +153,17 @@ else{
                 Login
               </p>
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="LOGIN">
+              <p style={{fontSize:"1em"}}>Are you an Admin?</p>
+              <p className="login-btn" type="submit" onClick={ChangetoAdminSignIn} style={{fontSize:"1em"}}>
+                Click me
+              </p>
+              </motion.div>
             <div className="small_device">
               <motion.div
                 initial={{ opacity: 0 }}
