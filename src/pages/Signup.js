@@ -8,25 +8,31 @@ function SignUp() {
   const [name, setName] = React.useState("");
   const [Email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const[role,setRole]=React.useState("")//here it will either be worker or Client
 
   let navigate = useNavigate();
   function ChangetoSignIn() {
     navigate("/");
   }
 
- 
   async function registerUser(event) {
+    console.log(role.toUpperCase())
+    if(role.toUpperCase()==="JOB" || role.toUpperCase()==="CLIENT"){
+    //   toast.error("ENTER YOUR ROLE AS EITHER 'JOB OR CLIENT' ");
+    //   return
+    // return
     event.preventDefault();
-    if(name && Email && password){
+    if (name && Email && password) {
       const response = await fetch("http://localhost:1337/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        Email,
-        password,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          Email,
+          password,
+          role
         }),
       });
 
@@ -38,15 +44,21 @@ function SignUp() {
       } else {
         console.log("not working");
       }
-
-    }
-    else{
+    } else {
       toast.error("PLEASE ENTER ALL THE FIELDS");
       return;
     }
-
-    
   }
+else{
+   toast.error("ENTER YOUR ROLE AS EITHER 'JOB OR CLIENT' ");
+      return
+    return
+}
+  }
+
+
+
+
   return (
     <>
       <div className="App-divide">
@@ -73,8 +85,8 @@ function SignUp() {
                 placeholder="ENTER YOUR NAME"
                 required={true}
                 onChange={(e) => setName(e.target.value)}
-                onKeyDown={(e)=>{
-                  e.code ==="Enter" && registerUser(e)
+                onKeyDown={(e) => {
+                  e.code === "Enter" && registerUser(e);
                 }}
               />
               <br />
@@ -84,8 +96,8 @@ function SignUp() {
                 required={true}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                onKeyDown={(e)=>{
-                  e.code ==="Enter" && registerUser(e)
+                onKeyDown={(e) => {
+                  e.code === "Enter" && registerUser(e);
                 }}
               />
               <br />
@@ -95,12 +107,26 @@ function SignUp() {
                 required={true}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                onKeyDown={(e)=>{
-                  e.code ==="Enter" && registerUser(e)
+                onKeyDown={(e) => {
+                  e.code === "Enter" && registerUser(e);
                 }}
               />
               <br />
               <br />
+              {/* <div>
+                <input type="checkbox" name="FOR JOB" onChange={handlecheckboxChange}/>
+                FOR JOB
+                <input type="checkbox" name="FOR SERVICES" /> FOR SERVICES
+              </div> */}
+               <input
+                type="text"
+                placeholder="ROLE:JOB OR CLIENT"
+                required={true}
+                onChange={(e) => setRole(e.target.value)}
+                onKeyDown={(e) => {
+                  e.code === "Enter" && registerUser(e);
+                }}
+              />
             </motion.div>
             <br />
             <motion.div
@@ -147,8 +173,7 @@ function SignUp() {
       </div>
       <div className="footer">
         {/* <Footer /> */}
-        <div className="footer">
-      </div>
+        <div className="footer"></div>
       </div>
     </>
   );
