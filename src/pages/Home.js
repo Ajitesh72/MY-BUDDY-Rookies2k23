@@ -33,7 +33,7 @@ function Home() {
     if(data){
       setUserData(data)
       setDatafetched(true)
-      // console.log(data)
+      console.log(data)
     }
     else{
       return(<h1>SOME ERROR OCCURED</h1>)
