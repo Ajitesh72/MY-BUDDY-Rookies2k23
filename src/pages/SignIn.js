@@ -7,6 +7,7 @@ import React from "react";
 function SignIn() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const[role,setRole]=React.useState("")//here it will either be worker or Client
 
   let navigate = useNavigate();
   function ChangetoSignUp() {
@@ -24,6 +25,7 @@ function SignIn() {
 
   async function loginUser(event) {
     event.preventDefault();
+    if(role.toUpperCase()==="JOB" || role.toUpperCase()==="CLIENT"){
     if(email && password){
       const response = await fetch("http://localhost:1337/api/login", {
       method: "POST",
@@ -33,6 +35,7 @@ function SignIn() {
       body: JSON.stringify({
         email,
         password,
+        role
         }),
       });
 
@@ -53,6 +56,11 @@ function SignIn() {
       toast.error("PLEASE ENTER ALL THE FIELDS");
       return;
     }
+  
+}else{
+  toast.error("ENTER YOUR ROLE AS EITHER 'JOB OR CLIENT' ");
+      return
+}
   }
   return (
     <div>
@@ -96,6 +104,14 @@ function SignIn() {
               />
               <br />
               <br />
+              <input
+                type="text"
+                placeholder="ROLE:JOB OR CLIENT"
+                required={true}
+                onChange={(e) => setRole(e.target.value)}
+                onKeyDown={(e) => {
+                  e.code === "Enter" && loginUser(e);
+                }}/>
             </motion.div>
             <br />
             <motion.div

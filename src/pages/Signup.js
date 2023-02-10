@@ -52,7 +52,6 @@ function SignUp() {
 else{
    toast.error("ENTER YOUR ROLE AS EITHER 'JOB OR CLIENT' ");
       return
-    return
 }
   }
 
