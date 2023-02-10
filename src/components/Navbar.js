@@ -11,7 +11,10 @@ function Navbar() {
 
   const [bool, setBool] = React.useState({
     home: true,
-    contactUs: false,
+    findwork:false,
+    addwork:false,
+    proposals:false,
+    application:false
   });
   React.useEffect(() => {
     // const token=localStorage.getItem("token")
@@ -33,7 +36,6 @@ async function getuserData(){
   if(data){
     setUserData(data)
     setDatafetched(true)
-    console.log(userData)
   }
   else{
     return(<h1>SOME ERROR OCCURED</h1>)
@@ -46,14 +48,57 @@ async function getuserData(){
       case "/home": {
         setBool({
           home: true,
-          contactUs: false,
+          findwork:false,
+    addwork:false,
+    proposals:false,
+    application:false
         });
         break;
       }
-      case "/ContactUs": {
+      // case "/ContactUs": {
+      //   setBool({
+      //     home: false,
+      //     contactUs: true,
+      //   });
+      //   break;
+
+      case "/Findwork": {
         setBool({
           home: false,
-          contactUs: true,
+          findwork:true,
+         addwork:false,
+         proposals:false,
+         application:false
+        });
+        break;
+      }
+      case "/AddWork": {
+        setBool({
+          home: false,
+          findwork:false,
+         addwork:true,
+         proposals:false,
+         application:false
+        });
+        break;
+      }
+      case "/Proposalrecieved": {
+        setBool({
+          home: false,
+          findwork:false,
+         addwork:false,
+         proposals:true,
+         application:false
+        });
+        break;
+      }
+      case "/Application": {
+        setBool({
+          home: false,
+          findwork:false,
+         addwork:false,
+         proposals:false,
+         application:true
         });
         break;
       }
@@ -68,18 +113,61 @@ async function getuserData(){
   const toggleHome = () => {
     setBool({
       home: true,
-      contactUs: false,
+      findwork:false,
+addwork:false,
+proposals:false,
+application:false
     });
     navigate("/Home");
   };
-  const toggleContactUs = () => {
+  // const toggleContactUs = () => {
+  //   setBool({
+  //     home: false,
+  //     contactUs: true,
+  //   });
+  //   navigate("/ContactUs");
+  // };
+  
+  const toggleFindWork = () => {
     setBool({
       home: false,
-      contactUs: true,
+      findwork:true,
+     addwork:false,
+     proposals:false,
+     application:false
     });
-    navigate("/ContactUs");
+    navigate("/Findwork");
   };
-
+  const toggleAddWork = () => {
+    setBool({
+      home: false,
+      findwork:false,
+     addwork:true,
+     proposals:false,
+     application:false
+    });
+    navigate("/AddWork");
+  };
+  const toggleApplication = () => {
+    setBool({
+      home: false,
+      findwork:false,
+     addwork:false,
+     proposals:false,
+     application:true
+    });
+    navigate("/Application");
+  };
+  const toggleProposals = () => {
+    setBool({
+      home: false,
+      findwork:false,
+     addwork:false,
+     proposals:true,
+     application:false
+    });
+    navigate("/Proposalrecieved");
+  };
   return (
     <motion.div
     initial={{ opacity: 0 }}
@@ -102,7 +190,8 @@ async function getuserData(){
         >
           HOME
         </p>
-        <p
+       
+        {/* <p
           onClick={toggleContactUs}
           style={{
             textDecoration: bool.contactUs ? "underline" : "",
@@ -111,6 +200,47 @@ async function getuserData(){
           className="Navbar-title"
         >
           CONTACTUS
+        </p> */}
+       {dataFetched&& userData.userData.role==="JOB"&& <p
+          onClick={toggleFindWork}
+          style={{
+            textDecoration: bool.findwork ? "underline" : "",
+            color: bool.findwork ? "#0058CC" : "",
+          }}
+          className="Navbar-title"
+        >
+          FIND WORK
+        </p>}
+        {dataFetched&& userData.userData.role==="CLIENT"&& <p
+          onClick={toggleAddWork}
+          style={{
+            textDecoration: bool.addwork ? "underline" : "",
+            color: bool.addwork ? "#0058CC" : "",
+          }}
+          className="Navbar-title"
+        >
+          ADD WORK
+        </p>}
+       
+        {dataFetched&& userData.userData.role==="CLIENT"&& <p
+          onClick={toggleProposals}
+          style={{
+            textDecoration: bool.proposals ? "underline" : "",
+            color: bool.proposals ? "#0058CC" : "",
+          }}
+          className="Navbar-title"
+        >
+          PROPOSALS 
+        </p>}
+        <p
+          onClick={toggleApplication}
+          style={{
+            textDecoration: bool.application ? "underline" : "",
+            color: bool.application ? "#0058CC" : "",
+          }}
+          className="Navbar-title"
+        >
+          APPLICATION 
         </p>
 
         <p
