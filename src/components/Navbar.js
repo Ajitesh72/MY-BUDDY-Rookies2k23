@@ -4,12 +4,41 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const [token] = React.useState(localStorage.getItem("token"));
+  const[dataFetched,setDatafetched]=React.useState(false)
+  const [userData, setUserData] = React.useState([]); 
   let navigate = useNavigate();
 
   const [bool, setBool] = React.useState({
     home: true,
     contactUs: false,
   });
+  React.useEffect(() => {
+    // const token=localStorage.getItem("token")
+    if(token){
+      getuserData()
+    }
+}, [token]);
+
+async function getuserData(){
+  const response = await fetch("http://localhost:1337/api/home/userData",{
+  method: "GET",
+  headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+  },
+  });
+  const data = await response.json();
+  console.log(data)
+  if(data){
+    setUserData(data)
+    setDatafetched(true)
+    console.log(userData)
+  }
+  else{
+    return(<h1>SOME ERROR OCCURED</h1>)
+  }
+} 
 
   React.useEffect(() => {
     // eslint-disable-next-line default-case
