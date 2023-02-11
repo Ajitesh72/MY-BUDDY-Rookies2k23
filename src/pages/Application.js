@@ -1,11 +1,11 @@
 import "../styles/application.css";
 import { motion } from "framer-motion";
-import{useState,useEffect} from "react"
+import { useState, useEffect } from "react"
 import Navbar from "../components/Navbar"
 import Hamburger from "../components/Hamburger";
 import Footer from "../components/Footer";
-import { useSelector} from "react-redux";
-import toast,{ Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 
@@ -15,13 +15,13 @@ function Application() {
   const [userData, setUserData] = useState([]); //We will store user information over here and since we have used password hashing in backend..users information wont be sacrificed
   let navigate = useNavigate();
   const flip = useSelector((state) => state.mainReducer.flipNavbar.value);
-  const [imgName , setImgName] = useState("")
+  const [imgName, setImgName] = useState("")
   const [img, setImg] = useState();
 
-  const [formData , setFormData] = useState({
-    name : "",
-    profession : "",
-    about : ""
+  const [formData, setFormData] = useState({
+    name: "",
+    profession: "",
+    about: ""
 
   })
   useEffect(() => {
@@ -49,58 +49,58 @@ function Application() {
     }
   }
 
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault()
-    if(formData.name===""||formData.profession===""||formData.about==="")    //img ko bhi daal mehdi
-    {
-      toast.error("PLEASE ENTER ALL THE FIELDS OF THIS FORM TO SUBMIT AN APPLICATION");
-      return ;
-      // setTimeout(function () {
-      //   navigate("/Home");
-      // }, 1500);
-    }
-    const sendingData = new FormData();
-    sendingData.append("file",img)
-    sendingData.append('objectData',JSON.stringify(formData))
-    console.log("sending to server")
-    const response = await fetch("http://localhost:1337/api/uploadWorkerData", {
-      method: "POST",
-      headers: {
-        // "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
-    },
-      body: sendingData
+    
+    if (formData.name && formData.profession && formData.about && img) {
+      const sendingData = new FormData();
+      sendingData.append("file", img)
+      sendingData.append('objectData', JSON.stringify(formData))
+      console.log("sending to server")
+      const response = await fetch("http://localhost:1337/api/uploadWorkerData", {
+        method: "POST",
+        headers: {
+          // "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: sendingData
       });
 
       const data = await response.json();
       console.log(data)
-      if(data.status==="ok"){
+      if (data.status === "ok") {
         toast.success("WE WILL CONNECT WITH YOU AFTER ACCEPTING YOUR APPLICATION,HANG TIGHT!")
-         setTimeout(function () {
-        navigate("/Home");
-      }, 200);
-      if(data.status!=="ok"){
-        toast.error("YOU HAVE ALREADY SENT IN YOUR Application,HANG TIGHT WHILE WE REVIEW YOUR APPLICATION")
+        setTimeout(function () {
+          navigate("/Home");
+        }, 200);
+        if (data.status !== "ok") {
+          toast.error("YOU HAVE ALREADY SENT IN YOUR Application,HANG TIGHT WHILE WE REVIEW YOUR APPLICATION")
+        }
       }
+    }
+    else{
+      toast.error("PLEASE ENTER ALL THE FIELDS OF THIS FORM TO SUBMIT AN APPLICATION");
+      return ;
+    }
+
   }
-}
 
   return (
     <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          viewport={{ once: true }}>
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.5 }}
+      viewport={{ once: true }}>
 
       {token && <div>
-        <Navbar/>
-        <Hamburger/>
+        <Navbar />
+        <Hamburger />
       </div>}
-      {!flip && token&&
-          <div>
+      {!flip && token &&
+        <div>
           <Toaster />
           <form className="upload-container" onSubmit={handleSubmit}>
-            
+
 
             <div className="upload-left">
               <div className="input-wrapper">
@@ -198,8 +198,8 @@ function Application() {
         </div>
       }
       <Footer />
-      {!token&&<div>
-       <h1>PLEASE SIGNIN TO VIEW THIS PAGE</h1>
+      {!token && <div>
+        <h1>PLEASE SIGNIN TO VIEW THIS PAGE</h1>
       </div>}
 
     </motion.div>

@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Eachwork({WorkData , sendBothEmail}) {
+    console.log(WorkData)
     let base64String
     if (WorkData.image) {
         base64String = btoa(

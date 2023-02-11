@@ -38,7 +38,7 @@ function Findwork() {
   }, [])
 
 
-  function sendBothEmail(e,clientEmail) {
+  function sendBothEmail(e, clientEmail) {
     e.preventDefault()
     fetch("http://localhost:1337/api/WorkRequestAccepted", {
       method: "POST",
@@ -46,9 +46,9 @@ function Findwork() {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       },
-      body:JSON.stringify(
+      body: JSON.stringify(
         {
-          clientEmail:clientEmail
+          clientEmail: clientEmail
         }
       )
     })
@@ -89,19 +89,20 @@ function Findwork() {
           <Hamburger />
         </div>
       }
-      {!flip &&
+      {!flip && token && dataFetched && userData.userData.role === "JOB" &&
         <div className="find-work-master">
-          
+
           <button className='search-job-btn'>Search Job Acc To Preference</button>
 
           {allWorkData && allWorkData.map(each => < Eachwork WorkData={each} sendBothEmail={sendBothEmail} />)}
         </div>
       }
-      <Footer />
-
-      {!token && dataFetched && userData.userData.role === "JOB" && <div>
+      {(!token || (dataFetched && userData.userData.role === "CLIENT")) && <div>
         <h1>PLEASE SIGNIN TO VIEW THIS PAGE</h1>
       </div>}
+      <Footer />
+
+
 
     </motion.div>
   );
