@@ -34,6 +34,7 @@ function Mehdi() {
             },
         });
         const fetchedData = await response.json();
+        console.log(fetchedData)
         setWorkerImg(fetchedData)
     }
 
