@@ -13,18 +13,23 @@ function AdminWorker() {
    const [userData, setUserData] = useState([]); //We will store admin information over here and since we have used password hashing in backend..users information wont be sacrificed
    const[clientApplication,setClientApplication]=useState([]) //isme client applications store honhe jo mapp hone vaale hai
    const[workerApplication,setWorkerApplication]=useState([])
-   const[showWorker,setShowWorker]=useState(true)
-   const[showClient,setShowClient]=useState(false)
+   const[showWorker,setShowWorker]=useState([])
+   const[showClient,setShowClient]=useState([])
+   const[workerdataFetched,setWorkerdataFetched]=useState(false)
+   const[clientdataFetched,setclientdataFetched]=useState(false)
+
    let navigate = useNavigate();
 
   useEffect(() => {
       // const token=localStorage.getItem("token")
       if(token){
         getuserData()
+        getworkerApplication()
+        getclientApplication()
       }
   }, [token]);
 
-  async function getuserData(){
+  async function getuserData(){                           //admin ka data aayega
     const response = await fetch("http://localhost:1337/api/home/userData",{
     method: "GET",
     headers: {
@@ -33,10 +38,47 @@ function AdminWorker() {
     },
     });
     const data = await response.json();
+    console.log(data)
     if(data){
       setUserData(data)
       setDatafetched(true)
       console.log(userData)
+    }
+    else{
+      return(<h1>SOME ERROR OCCURED</h1>)
+    }
+}
+  async function getworkerApplication(){                                          //worker ka applications aayega
+    const response = await fetch("http://localhost:1337/api/admin/getWorker",{
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    });
+    const data = await response.json();
+    if(data){
+      // console.log(data)
+      setWorkerApplication(data)
+      setWorkerdataFetched(true)
+    }
+    else{
+      return(<h1>SOME ERROR OCCURED</h1>)
+    }
+}
+  async function getclientApplication(){                                               //clients ka application aayega
+    const response = await fetch("http://localhost:1337/api/admin/getClient",{
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    });
+    const data = await response.json();
+    if(data){
+      console.log("client data:",data)
+      setClientApplication(data)
+      setclientdataFetched(true)
     }
     else{
       return(<h1>SOME ERROR OCCURED</h1>)
@@ -56,6 +98,9 @@ const SignOut = () => {
   navigate("/");
   window.localStorage.clear();
 };
+function check(){
+  console.log(workerApplication)
+}
 
 
   return (
@@ -85,15 +130,15 @@ const SignOut = () => {
                  <div>HERE ARE ALL THE VERIFICAION REQUESTS:</div>
                  <div>
 
-                 <div className="verification-btn" onClick={gotoadminWorker}>FOR WORKERS</div>
+                 <div className="verification-btn" onClick={gotoadminWorker} >FOR WORKERS</div>
                  <br/>
                  <div className="verification-btn" onClick={gotoadminClient}>FOR CLIENT</div>
                  </div>
               </div>
               <br/>
               <div>
-                INITIALLY WE WILL SHOW WORKERS KE REQUESTS WITH CONDITIONAL RENDERING OF SHOWWORKER &&{}
-                SIMILARLY FOR CLIENTS KE APPLICATIONS
+               {/* {showWorker&& workerdataFetched&& workerApplication.map} */}
+               {/* {showClient&&clientdataFetched&&  clientApplication.map} */}
               </div>
 
               </div>}
