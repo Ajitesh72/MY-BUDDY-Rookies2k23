@@ -1,4 +1,3 @@
-import "../styles/Contactus.css";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar"
 import Hamburger from "../components/Hamburger";
