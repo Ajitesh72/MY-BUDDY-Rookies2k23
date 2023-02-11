@@ -10,8 +10,11 @@
     margin-top: 3em;
     font-size: 1.5em;
 }
+.menu:hover{
+    cursor: pointer;
+}
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1092px) {
     .hamburger-main {
         display:flex;
         justify-content: space-between;

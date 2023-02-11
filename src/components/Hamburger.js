@@ -6,6 +6,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineCancel } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { flipNavbar } from "../reducers/NavbarReducer";
+import logo from "../images/logo.svg"
 
 function Hamburger() {
   const dispatch = useDispatch(); //make an action happedn onClick on a redux state from user.js file
@@ -198,18 +199,20 @@ application:false
       >
         <div className="Hamburger-logo" onClick={toggleHome}>
           <br />
-          LOGO
+          <img src={logo} alt="" className="logo" style={{fontSize:"1em"}}/>
         </div>
         {!flip && (
           <AiOutlineMenu
             style={{ fontSize: "3em", color: "darkblue" }}
             onClick={flipMenu}
+            className="menu"
           />
         )}
         {flip && (
           <MdOutlineCancel
             style={{ fontSize: "3em", color: "red" }}
             onClick={flipMenu}
+            className="menu"
           />
         )}
       </motion.div>

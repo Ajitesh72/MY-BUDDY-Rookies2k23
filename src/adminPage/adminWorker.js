@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {  useNavigate } from "react-router-dom";
 import { useSelector} from "react-redux";
 import Footer from "../components/Footer";
+import logo from "../images/logo.svg"
 // import { useEffect } from "react";
 
 function AdminWorker() {
@@ -71,7 +72,7 @@ const SignOut = () => {
             <br/>
             {dataFetched&&<div>           
               <div className="admin-header">
-                <div>LOGO</div>
+                <div><img src={logo} alt="" className="logo"></img></div>
 
               <div className="admin-header-signout" onClick={SignOut}>SIGNOUT</div>
               </div>

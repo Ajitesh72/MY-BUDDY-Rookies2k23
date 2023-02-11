@@ -2,6 +2,7 @@ import "../styles/Navbar.css";
 import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../images/logo.svg"
 
 function Navbar() {
   const [token] = React.useState(localStorage.getItem("token"));
@@ -175,9 +176,15 @@ application:false
     transition={{ duration: 1, delay: 0.5 }}
     viewport={{ once: true }} className="navbar-main">
       <div className="navbarBody-1" >
-        <p className="Navbar-logo" onClick={toggleHome}>
+        {/* <p className="Navbar-logo" onClick={toggleHome}>
           LOGO
-        </p>
+        </p> */}
+        {/* <br/> */}
+        <div>
+      
+      <br/>
+      <img src={logo} alt="" className="logo"/>
+        </div>
       </div>
       <div className="navbarBody-2">
         <p

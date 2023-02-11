@@ -16,16 +16,18 @@
 .Navbar-logo:hover{
     cursor: pointer; 
 }
+.logo{
+    height:3em;
+  }
 
+  @media screen and (max-width: 1092px) {
+    .navbar-main {
+        display:none
+    }
+  }
 
 @media screen and (max-width: 938px) {
     .navbar-main{
         font-size: 0.5em;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    .navbar-main {
-        display:none
     }
   }
