@@ -96,13 +96,13 @@ function AddWork() {
       </div>
       }
 
-      {!flip && <>
+      {!flip && token&&dataFetched && userData.userData.role === "CLIENT" &&<>
         <h2 style={{marginLeft:"3em"}}>Add A New Work</h2>
       <div className="addwork-main">
         <div>
           <div className="addwork-form">
               {/* <input placeholder="PROFFESSION REQUIRED:"/> */}
-              <h3>PROFFESSION REQUIRED:</h3>
+              <h3>PROFFESSION REQUIRED:{userData.userData.name}</h3>
               <textarea rows = "1" cols = "60" placeholder="MAID" name = "description" style={{resize: "none",border:"2px solid black"}} maxlength="30" onChange={(e) => setProfession(e.target.value)}>
          </textarea>
           </div>
@@ -133,7 +133,7 @@ function AddWork() {
       }
 
       <Footer />
-      {!token && <div>
+      {(!token ||(dataFetched && userData.userData.role === "JOB")) && <div>
         <h1>PLEASE SIGNIN TO VIEW THIS PAGE</h1>
       </div>}
 

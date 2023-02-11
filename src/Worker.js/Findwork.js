@@ -46,20 +46,20 @@ function Findwork() {
       transition={{ duration: 1, delay: 0.5 }}
       viewport={{ once: true }}>
 
-      {token && 
+      {token && dataFetched&&
       <div>
         <Navbar />
         <Hamburger />
       </div>
       }
-      {!flip && 
+      {!flip && token && dataFetched&& userData.userData.role === "JOB"&&
       <div>
         FIND WORK-------FOR WORKERS
       </div>
       }
       <Footer />
 
-      {!token && dataFetched && userData.userData.role === "JOB" && <div>
+      {(!token ||(dataFetched && userData.userData.role === "CLIENT") )&& <div>
         <h1>PLEASE SIGNIN TO VIEW THIS PAGE</h1>
       </div>}
 

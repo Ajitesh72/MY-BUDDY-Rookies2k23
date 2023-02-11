@@ -1,15 +1,19 @@
 import "../styles/application.css";
 import { motion } from "framer-motion";
+import{useState,useEffect} from "react"
 import Navbar from "../components/Navbar"
 import Hamburger from "../components/Hamburger";
 import Footer from "../components/Footer";
-import { useState } from "react";
 import { useSelector} from "react-redux";
-import { Toaster } from "react-hot-toast";
+import toast,{ Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 function Application() {
   const [token] = useState(localStorage.getItem("token"));
+  const [dataFetched, setDatafetched] = useState(false);
+  const [userData, setUserData] = useState([]); //We will store user information over here and since we have used password hashing in backend..users information wont be sacrificed
+  let navigate = useNavigate();
   const flip = useSelector((state) => state.mainReducer.flipNavbar.value);
   const [imgName , setImgName] = useState("")
   const [img, setImg] = useState();
@@ -20,9 +24,41 @@ function Application() {
     about : ""
 
   })
+  useEffect(() => {
+    // const token=localStorage.getItem("token")
+    if (token) {
+      getuserData();
+    }
+  }, [token]);
+
+  async function getuserData() {
+    const response = await fetch("http://localhost:1337/api/home/userData", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    const data = await response.json();
+    if (data) {
+      setUserData(data);
+      setDatafetched(true);
+      console.log(data);
+    } else {
+      return <h1>SOME ERROR OCCURED</h1>;
+    }
+  }
 
   async function handleSubmit(e){
     e.preventDefault()
+    if(formData.name===""||formData.profession===""||formData.about==="")    //img ko bhi daal mehdi
+    {
+      toast.error("PLEASE ENTER ALL THE FIELDS OF THIS FORM TO SUBMIT AN APPLICATION");
+      return ;
+      // setTimeout(function () {
+      //   navigate("/Home");
+      // }, 1500);
+    }
     const sendingData = new FormData();
     sendingData.append("file",img)
     sendingData.append('objectData',JSON.stringify(formData))
@@ -38,7 +74,16 @@ function Application() {
 
       const data = await response.json();
       console.log(data)
+      if(data.status==="ok"){
+        toast.success("WE WILL CONNECT WITH YOU AFTER ACCEPTING YOUR APPLICATION,HANG TIGHT!")
+         setTimeout(function () {
+        navigate("/Home");
+      }, 200);
+      if(data.status!=="ok"){
+        toast.error("YOU HAVE ALREADY SENT IN YOUR Application,HANG TIGHT WHILE WE REVIEW YOUR APPLICATION")
+      }
   }
+}
 
   return (
     <motion.div
@@ -51,7 +96,7 @@ function Application() {
         <Navbar/>
         <Hamburger/>
       </div>}
-      {!flip && 
+      {!flip && token&&
           <div>
           <Toaster />
           <form className="upload-container" onSubmit={handleSubmit}>

@@ -59,6 +59,9 @@ function Adminlogin() {
     }
   
   }
+  function ChangetoSignIn() {
+    navigate("/");
+  }
   return (
     <div>
       
@@ -120,6 +123,18 @@ function Adminlogin() {
               onClick={loginUser}
             >
               Sign In
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="LOGIN"
+            >
+              <p>I am Not an Admin!</p>
+              <p className="login-btn" type="submit" onClick={ChangetoSignIn}>
+                TakemeBack
+              </p>
             </motion.div>
             {/* <motion.div
               initial={{ opacity: 0 }}

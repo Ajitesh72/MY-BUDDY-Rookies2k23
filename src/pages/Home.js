@@ -86,15 +86,15 @@ function Home() {
                                 className="theme-btn btn-style-one"
                                 onClick={toFindWork}
                               >
-                                FIND WORK
+                               GET STARTED
                               </div>
                             )}
                             {userData.userData.role === "CLIENT" && (
                               <div
-                                className="theme-btn btn-style-one"
+                                className="theme-btn-btn-style-one"
                                 onClick={toAddWork}
                               >
-                                ADD WORK
+                                GET STARTED
                               </div>
                             )}
                             <br />
@@ -125,7 +125,21 @@ function Home() {
                               alt=""
                             />
                             <h2>WHAT WE DO?</h2>
-                            {/* </a> */}
+                            {userData.userData.role === "JOB" && (
+                              <div
+                                className="theme-btn btn-style-one"
+                                onClick={toFindWork}
+                              >
+                                FIND WORK !
+                              </div>
+                            )}
+                            {userData.userData.role === "CLIENT" && 
+                              <div
+                                className="theme-btn btn-style-one"
+                                onClick={toAddWork}
+                              >
+                                ADD WORK
+                              </div>}
                           </figure>
                         </div>
                       </div>
@@ -138,9 +152,9 @@ function Home() {
                     <br />
                     <br />
                     <div className="sec-title">
-                      <span className="title" style={{ marginLeft: "3em" }}>
+                      {/* <span className="title" style={{ marginLeft: "3em" }}>
                         Our Future Goal
-                      </span>
+                      </span> */}
                       <h2>We want to lead in innovation & Technology</h2>
                     </div>
                     <div className="text">

@@ -148,7 +148,7 @@ function AdminWorker() {
           <div className="Home-main">
             <br />
             <br />
-            {dataFetched && <div>
+            {dataFetched && token&& (userData.userData.name ==="Ajitesh"||userData.userData.name ==="Mohammed")&& <div>
               <div className="admin-header">
                 <div><img src={logo} alt="" className="logo"></img></div>
 
