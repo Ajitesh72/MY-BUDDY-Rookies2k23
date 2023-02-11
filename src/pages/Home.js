@@ -118,6 +118,7 @@ function Home() {
                             > */}
                             <img
                               src={homeimg}
+                              className="working-img"
                               // src="../images/homePic.png"
                               // style={{height:"4em"}}
                               // src="https:///i.ibb.co/QP6Nmpf/image-1-about.jpg"

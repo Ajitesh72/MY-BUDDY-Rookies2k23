@@ -15,7 +15,7 @@ function Footer() {
           </div>
           <div className="info">
 
-          <p>YOUR ALL IN ONE STOP TO CODING</p>
+          <p>YOUR ALL IN ONE STOP FOR WORK</p>
           </div>
           <div className="info">
           <p>DESIGNED AND DEVELOPED BY TEAM-RandomState42</p>

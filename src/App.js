@@ -14,28 +14,28 @@ import Application from "./pages/Application";
 import AddWork from "./ClientPage/Addwork";
 import Proposalrecieved from "./ClientPage/ProposalsRecieved";
 //for workers
-import  Findwork from "./Worker.js/Findwork";
+import Findwork from "./Worker.js/Findwork";
 
 function App() {
   // const [token, setToken] = React.useState(localStorage.getItem("token"));
   return (
     <div>
       <Routes>
-        <Route path="/" element={<SignIn/>} />
+        <Route path="/" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/AdminlogIn" element={<Adminlogin />} />
         <Route path="/AdminWorker" element={<AdminWorker />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/Application" element={<Application/>} />
+        <Route path="/Application" element={<Application />} />
 
         <Route path="/AddWork" element={<AddWork />} />
         <Route path="/Proposalrecieved" element={<Proposalrecieved />} />
         <Route path="/Findwork" element={<Findwork />} />
 
 
-        <Route path="/mehdi" element={<Mehdi/>} />
-        <Route path="/Premium" element={<Premium/>} />
-        <Route path="/stripepaymentsuccess" element={<Success/>} />
+        <Route path="/mehdi" element={<Mehdi />} />
+        <Route path="/Premium" element={<Premium />} />
+        <Route path="/stripepaymentsuccess" element={<Success />} />
         <Route path="stripepaymentcancel" element={<h1>failed</h1>} />
         {/* <Route path="success" element={<Success/>} /> */}
 

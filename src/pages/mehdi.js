@@ -44,11 +44,13 @@ function Mehdi() {
             <button onClick={getuserData} >Fetch something</button>
             <button onClick={getallworkers} >GET WORKERS</button>
             {workerImg.map((singleData) => {
-                const base64String = btoa(
-                    String.fromCharCode(...new Uint8Array(singleData.image.data.data))
-                )
-                console.log(base64String)
-                return (<img src={`data:image/png;base64,${base64String}`} width="100" />)
+                if(singleData.image){
+                    const base64String = btoa(
+                        String.fromCharCode(...new Uint8Array(singleData.image.data.data))
+                    )
+                    console.log(base64String)
+                    return (<img src={`data:image/png;base64,${base64String}`} width="100" />)
+                }
             })}
 
             {/* {workerImg.map((singleData) => {
