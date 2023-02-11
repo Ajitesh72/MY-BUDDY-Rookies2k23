@@ -55,6 +55,7 @@ function Application() {
           <div>
           <Toaster />
           <form className="upload-container" onSubmit={handleSubmit}>
+            
 
             <div className="upload-left">
               <div className="input-wrapper">
