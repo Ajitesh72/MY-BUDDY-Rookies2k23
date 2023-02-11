@@ -248,7 +248,7 @@ application:false
         >
           ADD WORK
         </ul>}
-        {dataFetched&& userData.userData.role==="CLIENT"&& <ul
+        {/* {dataFetched&& userData.userData.role==="CLIENT"&& <ul
           onClick={toggleProposals}
           style={{
             textDecoration: bool.proposals ? "underline" : "",
@@ -257,7 +257,7 @@ application:false
           className="Navbar-title"
         >
           PROPOSALS 
-        </ul>}
+        </ul>} */}
         <p
           onClick={toggleApplication}
           style={{

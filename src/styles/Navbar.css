@@ -13,12 +13,19 @@
     cursor: pointer; 
     color:rgb(63, 86, 188)
 }
+.Navbar-title-signout:hover{
+    cursor: pointer; 
+    color:rgb(63, 86, 188);
+    text-decoration: underline red;
+
+}
 .Navbar-logo:hover{
     cursor: pointer; 
 }
 .logo{
     height:3em;
   }
+
 
   @media screen and (max-width: 1092px) {
     .navbar-main {

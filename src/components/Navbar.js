@@ -229,7 +229,7 @@ application:false
           ADD WORK
         </p>}
        
-        {dataFetched&& userData.userData.role==="CLIENT"&& <p
+        {/* {dataFetched&& userData.userData.role==="CLIENT"&& <p
           onClick={toggleProposals}
           style={{
             textDecoration: bool.proposals ? "underline" : "",
@@ -238,7 +238,7 @@ application:false
           className="Navbar-title"
         >
           PROPOSALS 
-        </p>}
+        </p>} */}
         <p
           onClick={toggleApplication}
           style={{
@@ -255,7 +255,7 @@ application:false
             color: "Red",
           }}
           onClick={SignOut}
-          className="Navbar-title"
+          className="Navbar-title-signout"
         >
           SIGNOUT
         </p>

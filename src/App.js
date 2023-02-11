@@ -29,7 +29,7 @@ function App() {
         <Route path="/Application" element={<Application />} />
 
         <Route path="/AddWork" element={<AddWork />} />
-        <Route path="/Proposalrecieved" element={<Proposalrecieved />} />
+        {/* <Route path="/Proposalrecieved" element={<Proposalrecieved />} /> */}
         <Route path="/Findwork" element={<Findwork />} />
 
 
