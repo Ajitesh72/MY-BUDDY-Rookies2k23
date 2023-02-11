@@ -62,9 +62,10 @@ margin-bottom:60px;
 .sec-title .title{
 position: relative;
 display: block;
-font-size: 18px;
+font-size: 22px;
 line-height: 24px;
-color: #00aeef;
+color: #0058cc;
+text-decoration: underline#398dfb;
 font-weight: 500;
 margin-bottom: 15px;
 
@@ -143,7 +144,7 @@ font-family: "Font Awesome 5 Free";
 }
 
 .list-style-one li a:hover{
-color: #44bce2;
+color: #0058cc;
 }
 
 .btn-style-one{
@@ -156,11 +157,11 @@ padding: 10px 30px;
 font-weight: 600;
 overflow: hidden;
 letter-spacing: 0.02em;
-background-color: #00aeef;
+background-color:#0058cc;
 }
 
 .btn-style-one:hover{
-background-color: #0794c9;
+background-color: #2050bf;
 color: #ffffff;
 }
 .about-section{
@@ -185,7 +186,7 @@ padding-left: 30px;
 margin-bottom: 20px;
 font-size: 16px;
 line-height: 26px;
-color: #848484;
+color: #000000;
 font-weight: 400;
 }
 
@@ -238,6 +239,10 @@ text-align: center;
 color: #fff;
 margin: 0;
 }
+.inner-column wow fadeInLeft{
+    display: flex;
+    justify-content: center;
+}
 .about-section .image-column .inner-column .author-desc span{
 font-size: 16px;
 letter-spacing: 6px;
@@ -255,7 +260,7 @@ top: -80px;
 left: -3px;
 background: transparent;
 z-index: 0;
-border: 44px solid #00aeef;
+border: 44px solid #0058cc;
 }
 
 .about-section .image-column .image-1{

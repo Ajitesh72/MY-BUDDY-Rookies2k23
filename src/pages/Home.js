@@ -70,7 +70,7 @@ function Home() {
                           <div className="sec-title">
                             <h2>WHY MYBUDDY?</h2>
                           </div>
-                          <div className="text">When we look out in</div>
+                          {/* <div className="text">When we look out in</div> */}
                           <div className="text">
                             It is no secret that the need for security in
                             today’s day and age is ever rising and MYBUDDY’s sole
