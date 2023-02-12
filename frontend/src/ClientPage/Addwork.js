@@ -3,24 +3,24 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar"
 import Hamburger from "../components/Hamburger";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { useSelector } from "react-redux";
-import toast, { Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-
 
 
 function AddWork() {
-  let navigate = useNavigate();
   const [token] = useState(localStorage.getItem("token"));
   const flip = useSelector((state) => state.mainReducer.flipNavbar.value);
-  const [dataFetched, setDatafetched] = React.useState(false)
-  const [userData, setUserData] = React.useState([]);
+  const [dataFetched, setDatafetched] = useState(false)
+  const [userData, setUserData] = useState([]);
+  const [userFullData , setUserFullData] = useState()
   //new
   const [profession, setProfession] = React.useState("")
   const [jobDesc, setJobdesc] = React.useState("")
-  React.useEffect(() => {
+
+
+
+  useEffect(() => {
     if (token) {
       getuserData()
     }
@@ -35,12 +35,24 @@ function AddWork() {
       },
     });
     const data = await response.json();
-    console.log(data)
     if (data) {
-      
-       
       setUserData(data)
+      console.log("DATA HERE IS",data.userData.email)
       setDatafetched(true)
+
+      // BELOW FETCH GETS THE WHOLE DATA OF THE USER BASED ON HIS EMAIL
+      fetch("http://localhost:1337/api/getClientbyEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body:JSON.stringify(
+          {
+            email:data.userData.email
+          }
+        )
+      }).then(res => res.json()).then((data) => {setUserFullData(data);console.log(data)})
     }
     else {
       return (<h1>SOME ERROR OCCURED</h1>)
@@ -84,13 +96,6 @@ function AddWork() {
       })
     });
     const data = await response.json();
-    if(data)
-    {
-      toast.success("JOB SUBMITTED!AFTER WE GET GET A MACTH WE WILL SEND YOU AN EMAIL")
-      setTimeout(function () {
-        navigate("/Home");
-      }, 2000);
-    }
   }
 
 
@@ -109,20 +114,20 @@ function AddWork() {
         </div>
       }
 
-      {!flip && token && dataFetched && userData.userData.role === "CLIENT" && <>
-      <Toaster />
-        <h2 style={{ marginLeft: "3em" }}>SUBMIT A NEW WORK</h2>
+      {(!flip && token && dataFetched && userData.userData.role === "CLIENT" && ( userFullData ? userFullData.applicationStatus : true ))?
+      <>
+        <h2 style={{ marginLeft: "3em" }}>Add A New Work</h2>
         <div className="addwork-main">
           <div>
             <div className="addwork-form">
               {/* <input placeholder="PROFFESSION REQUIRED:"/> */}
-              <h3 style={{color:"darkblue"}}>PROFFESSION REQUIRED:</h3>
-              <textarea rows="1" cols="60" placeholder="MAID" name="description" style={{ resize: "none", border: "2px solid black",borderRadius:"1.5em",paddingLeft:"1em" }} maxlength="30" onChange={(e) => setProfession(e.target.value)}>
+              <h3>PROFFESSION REQUIRED:{userData.userData.name}</h3>
+              <textarea rows="1" cols="60" placeholder="MAID" name="description" style={{ resize: "none", border: "2px solid black" }} maxlength="30" onChange={(e) => setProfession(e.target.value)}>
               </textarea>
             </div>
             <div className="addwork-form-1">
-              <h3 style={{color:"darkblue"}}>JOB DESCRIPTION:</h3>
-              <textarea  rows="15" cols="60" placeholder="I NEED A MAID WHO IS AVAILABLE FROM 10 AM-5PM ON WEEKDAYS" name="description" maxlength="150" style={{ resize: "none", border: "2px solid black",borderRadius:"1.5em",paddingLeft:"1em",paddingTop:"0.5em" }} onChange={(e) => setJobdesc(e.target.value)}>
+              <h3>JOB DESCRIPTION:</h3>
+              <textarea rows="15" cols="60" placeholder="I NEED A MAID WHO IS AVAILABLE FROM 10 AM-5PM ON WEEKDAYS" name="description" maxlength="150" style={{ resize: "none", border: "2px solid black" }} onChange={(e) => setJobdesc(e.target.value)}>
               </textarea>
               <div className="addwork-btn">
                 <motion.button
@@ -144,10 +149,13 @@ function AddWork() {
           </div>
         </div>
       </>
+      :<h1>Please Submit Application First To Be Able To Add A Job</h1>
       }
+
       {(!token || (dataFetched && userData.userData.role === "JOB")) && <div>
         <h1>PLEASE SIGNIN TO VIEW THIS PAGE</h1>
       </div>}
+
 
       <Footer />
 

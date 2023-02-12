@@ -49,9 +49,3 @@
 .send-req-button:active{
     background: #024bab;
 }
-.search-job-btn:hover{
-    cursor: pointer;
-}
-.send-req-button:hover{
-    cursor: pointer;
-}

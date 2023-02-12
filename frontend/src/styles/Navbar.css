@@ -1,0 +1,40 @@
+.navbar-main{
+    display: flex;
+    justify-content: space-between;
+    margin:1.5em 5em  1.5em 5em;
+    font-size: 1em;
+    /* font-size: small; */
+}
+.navbarBody-2{
+    display: flex;
+    gap: 4em;
+}
+.Navbar-title:hover{
+    cursor: pointer; 
+    color:rgb(63, 86, 188)
+}
+.Navbar-title-signout:hover{
+    cursor: pointer; 
+    color:rgb(63, 86, 188);
+    text-decoration: underline red;
+
+}
+.Navbar-logo:hover{
+    cursor: pointer; 
+}
+.logo{
+    height:3em;
+  }
+
+
+  @media screen and (max-width: 1092px) {
+    .navbar-main {
+        display:none
+    }
+  }
+
+@media screen and (max-width: 938px) {
+    .navbar-main{
+        font-size: 0.5em;
+    }
+  }

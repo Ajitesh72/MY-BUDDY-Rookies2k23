@@ -1,5 +1,4 @@
 import React from 'react'
-import "../styles/findwork.css"
 
 function Eachwork({WorkData , sendBothEmail}) {
     console.log(WorkData)

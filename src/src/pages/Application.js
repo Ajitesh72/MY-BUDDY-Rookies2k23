@@ -72,7 +72,7 @@ function Application() {
         toast.success("WE WILL CONNECT WITH YOU AFTER ACCEPTING YOUR APPLICATION,HANG TIGHT!")
         setTimeout(function () {
           navigate("/Home");
-        }, 200);
+        }, 2000);
         if (data.status !== "ok") {
           toast.error("YOU HAVE ALREADY SENT IN YOUR Application,HANG TIGHT WHILE WE REVIEW YOUR APPLICATION")
         }
@@ -168,8 +168,8 @@ function Application() {
               </div>
               <div className="upload-unit">
                 <h1>About You</h1>
-                <input  
-                  placeholder="Eg:I NEED A MAID WHO COULD WORK AT 8AM BEFORE I GOTO WORK"
+                <input
+                  placeholder="Eg: Electrician"
                   onChange={(e) => {
                     setFormData((prev) => {
                       return {
