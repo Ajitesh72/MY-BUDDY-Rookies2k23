@@ -43,7 +43,7 @@ function Home() {
     navigate("/Findwork");
   }
   function toAddWork() {
-    navigate("/");
+    navigate("/AddWork");
   }
 
   return (
