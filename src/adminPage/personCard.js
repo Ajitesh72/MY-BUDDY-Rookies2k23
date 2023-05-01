@@ -1,18 +1,20 @@
 import React from 'react'
 
 function PersonCard(props) {
-    console.log(props.allData)
-    let base64String
-    if (props.allData.image) {
+     console.log(props.allData);
+    let base64String;
+    if (props.allData.image && props.allData.image instanceof Uint8Array) {
         base64String = btoa(
-            String.fromCharCode(...new Uint8Array(props.allData.image.data.data))
-        )
+            String.fromCharCode(...new Uint8Array(props.allData.image))
+        );
     }
+    // Do something with the base64String
+
 
     return (
         <div className='card-master'>
             <div className='card-left-image'>
-                <img src={`data:image/png;base64,${base64String}`} width="100" />
+                <img src={`data:image/png;base64,${base64String}`} width="100" alt="" />
             </div>
             <div className='card-right-image'>
                 <p className='person-name person-text'>{props.allData.name}</p>

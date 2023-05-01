@@ -12,7 +12,7 @@ import Eachwork from "./eachwork";
 
 
 function Findwork() {
-  const [token] = useState(localStorage.getItem("token"));
+  const token = useState(localStorage.getItem("token"));
   const flip = useSelector((state) => state.mainReducer.flipNavbar.value);
   const [dataFetched, setDatafetched] = useState(false)
   const [userData, setUserData] = useState([]);
@@ -20,9 +20,10 @@ function Findwork() {
 
   useEffect(() => {
     if (token) {
+      console.log("TOKEN HAI")
       getuserData()
     }
-  }, [token]);
+  }, []);
 
 
   useEffect(() => {
@@ -57,7 +58,7 @@ function Findwork() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        if(data.status == "ok"){
+        if(data.status ==="ok"){
           toast.success("Request Sent! Kindly Check Your Gmail")
         }
       })
@@ -80,6 +81,9 @@ function Findwork() {
       return (<h1>SOME ERROR OCCURED</h1>)
     }
   }
+  function searchJob(){
+    console.log(allWorkData)
+  }
 
   return (
     <motion.div
@@ -97,7 +101,7 @@ function Findwork() {
       {!flip && token && dataFetched && userData.userData.role === "JOB" &&
         <div className="find-work-master">
 
-          <button className='search-job-btn'>Search Job Acc To Preference <AiOutlineSearch size ='28'className="icons_img" color="white"/></button>
+          <button className='search-job-btn' onClick={searchJob}>Search Job Acc To Preference <AiOutlineSearch size ='28'className="icons_img" color="white"/></button>
 
           {allWorkData && allWorkData.map(each => < Eachwork WorkData={each} sendBothEmail={sendBothEmail} />)}
         </div>
