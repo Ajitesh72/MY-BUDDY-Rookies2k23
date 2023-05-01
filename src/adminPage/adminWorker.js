@@ -22,8 +22,9 @@ function AdminWorker() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    // const token=localStorage.getItem("token")
+    const token=localStorage.getItem("token")
     if (token) {
+      console.log("token aaya")
       getuserData()
       getworkerApplication()
       getclientApplication()
@@ -148,7 +149,7 @@ function AdminWorker() {
           <div className="Home-main">
             <br />
             <br />
-            {dataFetched && token&& (userData.userData.name ==="Ajitesh"||userData.userData.name ==="Mohammed")&& <div>
+            {dataFetched && token&& (userData.userData.name ==="Ajitesh"||userData.userData.name ==="admin")&& <div>
               <div className="admin-header">
                 <div><img src={logo} alt="" className="logo"></img></div>
 
@@ -156,7 +157,7 @@ function AdminWorker() {
               </div>
               {/* iske ander hi code likhna */}
               <div >
-                <h2>WELCOME BACK ADMIN {userData.userData.name || "No quote found"}!!!!!</h2>
+                <h2>WELCOME BACK  {userData.userData.name || "No quote found"}!!!!!</h2>
 
               </div>
               <div className="verificationMain">
